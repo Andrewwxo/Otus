@@ -1,3 +1,18 @@
+import time
+from functools import wraps
+
+def time_call(func):
+    @wraps(func)
+    def wrapper(*args):
+        start_time = time.time()
+        res = func(*args)
+        time_taken = time.time() - start_time
+        print(f"time taken: {time_taken:.13f}")
+        return res
+    return wrapper
+
+
+@time_call
 def number_filter(*args):
     prost = []
     chet = []
