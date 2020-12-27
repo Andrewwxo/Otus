@@ -32,10 +32,7 @@ def square_2(*args):
     print(square_list)
 square_2(2, 3, 4)
 
-# if __name__ == "__main__":
-#     time_call()
-#     square()
-#     square_2()
+
 
 
 
