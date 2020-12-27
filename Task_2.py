@@ -30,18 +30,18 @@ def prime_number(numbers):
 
 
 @time_call
-def chet_nechet(numbers):
-    chet = []
-    nechet = []
+def even_odd(numbers):
+    even = []
+    odd = []
     for i in numbers:
         if i % 2 == 0:
-            chet.append(i)
+            even.append(i)
         else:
-            nechet.append(i)
-    print("Even numbers: ", chet, "Odd numbers: ", nechet)
+            odd.append(i)
+    print("Even numbers: ", even, "Odd numbers: ", odd)
 
 
 if __name__ == "__main__":
     numbers = 1, 2, 3, 4, 7, 15, 17, 22
     prime_number(numbers)
-    chet_nechet(numbers)
+    even_odd(numbers)

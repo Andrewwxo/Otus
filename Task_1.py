@@ -13,28 +13,25 @@ def time_call(func):
     return wrapper
 
 @time_call
-def square(*args):
+def square(numbers):
     square_list = []
-    for i in args:
+    for i in numbers:
         square_list.append(i ** 2)
     print(square_list)
 
-square(2, 3 ,4)
-
-
-keyword = int(input("Введите степень: "))
-
 @time_call
-def square_2(*args):
+def square_2(numbers):
     square_list = []
-    for i in args:
+    for i in numbers:
        square_list.append(i ** keyword)
     print(square_list)
-square_2(2, 3, 4)
 
 
-
-
+if __name__ == '__main__':
+    numbers = 2, 3, 4
+    square(numbers)
+    keyword = int(input("Введите степень: "))
+    square_2(numbers)
 
 
 
