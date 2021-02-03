@@ -1,4 +1,6 @@
-class Vehicle:
+from abc import abstractmethod
+
+class Vehicle():
     type_name = None
 
     def __init__(self, name, weight, carrying_capacity, engine_starting_password):
@@ -13,13 +15,14 @@ class Vehicle:
                f'Пароль для запуска двигателя: {self.engine_starting_password}; ({self.type_name})'
 
     @property
+    @abstractmethod
     def engine_starting_password_1(self):
         return self.engine_starting_password
 
     @engine_starting_password_1.setter
     def engine_starting_password_1(self, val):
         try:
-            int(val)
+            engine_starting_password = int(val)
         except Exception:
             raise ValueError('Пароль должен быть числом')
         self.engine_starting_password = val
@@ -28,7 +31,7 @@ class Vehicle:
 class Ship(Vehicle):
     type_name = 'Яхты'
 
-    def __init__(self, name, weight, carrying_capacity, engine_starting_password , displacement):
+    def __init__(self, name, weight, carrying_capacity, engine_starting_password, displacement ):
         super().__init__(name, weight, carrying_capacity, engine_starting_password)
         self.displacement = displacement
 
