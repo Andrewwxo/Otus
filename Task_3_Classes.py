@@ -93,5 +93,3 @@ class Plan(Vehicle):
 
 
 
-
-
