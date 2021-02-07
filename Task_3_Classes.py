@@ -10,8 +10,9 @@ class VehicleMeta(type):
             new_class.year_of_production = None
         return new_class
 
-class Vehicle(metaclass=VehicleMeta):
+class Vehicle(metaclass = VehicleMeta):
     type_name = None
+
 
     def __init__(self, name, weight, carrying_capacity, engine_starting_password):
         self.name = name
@@ -31,12 +32,22 @@ class Vehicle(metaclass=VehicleMeta):
         return self.engine_starting_password
 
     @engine_starting_password_1.setter
+    @abstractmethod
     def engine_starting_password_1(self, val):
         try:
             engine_starting_password = int(val)
         except Exception:
             raise ValueError('Пароль должен быть числом')
         self.engine_starting_password = val
+
+    @property
+    @abstractmethod
+    def depreciation(self):
+        current_year = datetime.now().year
+        year_of_production = 2015  # Рассчитываю аммортизацию для транспорта 2015 года выпуска
+        coefficient_depreciation = 0.05
+        depreciation = (current_year - year_of_production) * coefficient_depreciation
+        return depreciation
 
 
 
@@ -47,9 +58,20 @@ class Ship(Vehicle):
         super().__init__(name, weight, carrying_capacity, engine_starting_password)
         self.displacement = displacement
 
+    @property
     def engine_starting_password_1(self):
-        return self
+        return self.engine_starting_password
 
+    @engine_starting_password_1.setter
+    def engine_starting_password_1(self, val):
+        try:
+            engine_starting_password == 1
+        except Exception:
+            raise ValueError('Неверный пароль запуска двигателя')
+        self.engine_starting_password = val
+
+    def depreciation(self):
+        pass
 
 class Car(Vehicle):
     type_name = 'Легковые авто'
@@ -62,13 +84,22 @@ class Car(Vehicle):
         return f'{self.name}: Вес, кг: {self.weight}; ' \
                f'Грузоподъемность: {self.carrying_capacity}; ' \
                f'Пароль для запуска двигателя: {self.engine_starting_password}; ' \
-               f'Аммортизация: {self.depreciation}' \
+               f'Аммортизация: {self.depreciation}; ' \
                f'({self.type_name})'
 
+    @property
     def engine_starting_password_1(self):
-        return self
+        return self.engine_starting_password
 
-    @abstractmethod
+    @engine_starting_password_1.setter
+    def engine_starting_password_1(self, val):
+        try:
+            engine_starting_password == 1
+        except Exception:
+            raise ValueError('Неверный пароль запуска двигателя')
+        self.engine_starting_password = val
+
+    @property
     def depreciation(self):
         current_year = datetime.now().year
         year_of_production = 2015  # Рассчитываю аммортизацию для транспорта 2015 года выпуска
@@ -87,9 +118,18 @@ class Plan(Vehicle):
     engine_starting_password: int
     limit_height: int
 
-
+    @property
     def engine_starting_password_1(self):
-        return self
+        return self.engine_starting_password
 
+    @engine_starting_password_1.setter
+    def engine_starting_password_1(self, val):
+        try:
+            engine_starting_password == 1
+        except Exception:
+            raise ValueError('Неверный пароль запуска двигателя')
+        self.engine_starting_password = val
 
+    def depreciation(self):
+        pass
 
