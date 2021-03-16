@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, url_for
 from werkzeug.exceptions import NotFound
 
 product_app = Blueprint("product_app", __name__)
@@ -28,6 +28,12 @@ def product_details(product_id):
                            )
 
 
-@product_app.route("/add", methods=["GET", "POST"], endpoint="add")
+@product_app.route("/add/", methods=["GET", "POST"], endpoint="add")
 def product_add():
-    return render_template("products/add.html")
+    if request.method == "GET":
+        d_values = PRODUCTS.values()
+        last_element_name = tuple(d_values)[-1]
+        return render_template("products/add.html", last_element_name=last_element_name)
+
+    PRODUCTS[next(next_index)] = request.form.get("product-name")
+    return redirect(url_for("product_app.list"))

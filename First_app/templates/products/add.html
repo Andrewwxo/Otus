@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}
+  Product add
+{% endblock %}
+
+
+{% block body %}
+    <form method="post">
+        <label for="product-name-id"> Product basket </label>
+        <input id="product-name-id" type="text" placeholder="Chiken">
+        <input type="submit" value="Add basket">
+    </form>
+  <h1>Product <code>{{ product_name }}</code></h1>
+  <a href="{{ url_for('product_app.list') }}">back to products list</a>
+{% endblock %}
