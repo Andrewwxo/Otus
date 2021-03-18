@@ -4,13 +4,30 @@
   Product add
 {% endblock %}
 
-
+{% block head %}
+    <style>
+        #product-name-id {
+            font-weight: bold;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        input[type="submit"]{
+            padding: 7px;
+            margin: 8px;
+            border: 5px double darkgreen;
+        }
+        input[type="submit"]:focus {
+          border-color: yellow;
+        }
+    </style>
+{% endblock %}
 {% block body %}
     <form method="post">
         <label for="product-name-id"> Product basket </label>
         <input id="product-name-id" type="text" placeholder="Chiken">
-        <input type="submit" value="Add basket">
+        <br>
+        <input type="submit" value="Add product">
     </form>
-  <h1>Product <code>{{ product_name }}</code></h1>
-  <a href="{{ url_for('product_app.list') }}">back to products list</a>
+  <h1> Product <code>{{ product_name }}</code></h1>
+  <a href="{{ url_for('product_app.list') }}"> Back to products list</a>
 {% endblock %}

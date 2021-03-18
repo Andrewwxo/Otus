@@ -10,6 +10,7 @@ PRODUCTS = {
     4: "Bread"
 }
 
+next_index = iter(range(len(PRODUCTS) + 1, 100))
 
 @product_app.route("/", endpoint="list")
 def product_list():

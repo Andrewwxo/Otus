@@ -7,8 +7,7 @@
 
 {% block body %}
   <h1>Products list</h1>
-
-  <div>
+    <div>
     <ul>
       {% for product_id in products %}
         <li>
@@ -17,5 +16,8 @@
         </li>
       {% endfor %}
     </ul>
-  </div>
+    </div>
+    <div>
+        <a href="{{ url_for('product_app.add') }}"> Add new product </a>
+    </div>
 {% endblock %}
