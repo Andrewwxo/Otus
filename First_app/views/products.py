@@ -21,9 +21,10 @@ def product_list():
 def product_details(product_id):
     if product_id not in PRODUCTS:
         raise NotFound(f"Product with id {product_id} doesn't exist!")
+
     product_name = PRODUCTS[product_id]
 
-    return render_template("products/index.html",
+    return render_template("products/details.html",
                            product_id=product_id,
                            product_name=product_name,
                            )
@@ -34,7 +35,7 @@ def product_add():
     if request.method == "GET":
         d_values = PRODUCTS.values()
         last_element_name = tuple(d_values)[-1]
-        return render_template("products/add.html", last_element_name=last_element_name)
+        return render_template("products/add-new.html", last_element_name=last_element_name)
 
     PRODUCTS[next(next_index)] = request.form.get("product-name")
     return redirect(url_for("product_app.list"))
